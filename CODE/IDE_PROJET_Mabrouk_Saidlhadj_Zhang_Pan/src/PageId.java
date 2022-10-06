@@ -1,16 +1,35 @@
-//import java.util.ArrayList;
+
 
 public class PageId {
 	public int FileIdx;
 	public int PageIdx;
-	//public static ArrayList<PageId> liste = new ArrayList<PageId>();
+
 	
-	public PageId(int file,int page) {
-		FileIdx = file;
-		PageIdx = page;
+	    public int getFileIdx() {
+	        return FileIdx;
+	    }
+
+
+	    public int getPageIdx() {
+	        return PageIdx;
+	    }
+
+	   
+	   
+	    
+	    public PageId(int file,int page) {
+	        FileIdx = file;
+	        PageIdx = page;
+	    }
+	
+	public boolean equals(PageId pi) {
+		return (pi.FileIdx==this.FileIdx && pi.PageIdx==this.PageIdx);
 	}
 	
-	/*public void ajouter() {
-		liste.add(this);
-	}*/
+	@Override
+	public String toString() {
+		return "PageId [FileIdx=" + FileIdx + ", PageId=" + PageIdx + "]";
+	}
+	
+
 }
