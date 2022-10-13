@@ -1,20 +1,28 @@
 import java.nio.ByteBuffer;
 
 public class Frame {
-	private ByteBuffer buffer;
-	private PageId pageID;
-	private boolean pin_Count;
-	private boolean flag_dirty;
-	private boolean refBit;
+	public ByteBuffer buffer;
+	public PageId pageID;
+	//private boolean pin_Count;
+	public int pin_Count;
+	public boolean flag_dirty;
+	//private boolean refBit;
+	public ListeChainee chaine;
 	
-	public Frame() {
-		buffer = null;
-		pageID = null;
-		pin_Count = false;
+	public Frame(PageId pageID) {
+		this.pageID = pageID;
+		buffer = ByteBuffer.allocate((int) DBParams.pageSize);
+		pin_Count = 0;
 		flag_dirty = false;
-		refBit = false;
+		//refBit = false;
+		chaine = null;
 	}
 	
+	public String toString() {
+		return "(pageID : ) " +pageID+ " pin_count : "+pin_Count; 
+	}
+	
+	/*
 	public ByteBuffer getBuffer() {
 		return buffer;
 	}
@@ -31,9 +39,10 @@ public class Frame {
 		this.pageID = pageID;
 	}
 	
-	public boolean getPinCount() {
+	public int getPinCount() {
 		return pin_Count;
 	}
+	
 	
 	public void setPinCount(boolean pin_Count) {
 		this.pin_Count = pin_Count;
@@ -59,4 +68,5 @@ public class Frame {
 	public String toString() {
 		return "Frame [pageId=" + pageID + ", pinCount=" + pin_Count + ", dirty=" + flag_dirty + ", refBit=" + refBit + "]";
 	}	
+	*/
 }

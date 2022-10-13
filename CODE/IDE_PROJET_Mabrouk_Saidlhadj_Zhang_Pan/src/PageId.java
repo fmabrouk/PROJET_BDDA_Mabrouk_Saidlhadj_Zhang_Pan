@@ -28,7 +28,7 @@ public class PageId {
 	
 	@Override
 	public String toString() {
-		return "PageId [FileIdx=" + FileIdx + ", PageId=" + PageIdx + "]";
+		return "PageId [FileIdx = " + FileIdx + ", PageIdx = " + PageIdx + "]";
 	}
 	
 

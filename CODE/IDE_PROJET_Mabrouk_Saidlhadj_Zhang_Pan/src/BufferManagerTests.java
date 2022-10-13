@@ -13,20 +13,26 @@ public class BufferManagerTests {
 		//DiskManager disk = new DiskManager();
 		DiskManager disk =  DiskManager.getSingleton();
 		/*Frame frame = new Frame();
-		frame.toString();*/
+		 */ 
 		
-		//ByteBuffer br1 = ByteBuffer.allocate(DBParams.pageSize);
+		
+		ByteBuffer br1 = ByteBuffer.allocate(DBParams.pageSize);
 		PageId pageid1 = disk.AllocPage();
+		//PageId pageid2 = disk.AllocPage();
 		//pageid1.toString();
 		//PageId pageid2 = disk.AllocPage();
-		ByteBuffer br1 = buffermanager.GetPage(pageid1);
+		 br1 = buffermanager.GetPage(pageid1);
+		 //br1 = buffermanager.GetPage(pageid2);
+		 buffermanager.freePage(pageid1,false);
+		//buffermanager.freePage(pageid1, false);
+		/*ByteBuffer br3 = ByteBuffer.allocate(DBParams.pageSize);*/ 
 		
-		ByteBuffer br3 = ByteBuffer.allocate(DBParams.pageSize); 
+       /* br1.putChar('D');*/
 		
-        br3.putChar('D');
+		/*
         disk.writePage(pageid1,br3); 
         ByteBuffer br4 = buffermanager.GetPage(pageid1);
-        System.out.println(br4.getChar());
+        System.out.println(br4.getChar());*/
 	}
 
 }

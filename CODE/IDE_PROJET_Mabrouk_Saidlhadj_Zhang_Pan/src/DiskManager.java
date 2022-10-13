@@ -17,41 +17,47 @@ public class DiskManager {
 	 * fonction permet d'allouer la place en mémoire pour le pageId
 	 * @return renvoie la pageId allouée
 	*/
-	public PageId AllocPage() {       
-		if(pagesDesallouees.size()!=0) {
-			PageId p1 = pagesDesallouees.get(0);
-			pagesAllouees.add(pagesDesallouees.get(0));
-			pagesDesallouees.remove(0);
-			return p1;
-		}
-		PageId ID2 = new PageId(Npage,taillePage);
-		pagesAllouees.add(ID2);
-		++taillePage;
-		
-		if(taillePage>=DBParams.maxPagesPerFile ) {
-			++Npage;
-			taillePage=0;
-			
-			File dir  = new File(DBParams.DBPath);
-	        File[] liste = dir.listFiles();
-	        
-			int numFichier = GetIndice(liste); 
-		     numFichier++;
-		     File fileCreated = new File(DBParams.DBPath+"\\F"+numFichier+".bdda");
-		     try {
-				if(fileCreated.createNewFile()) {
-					 System.out.println("Fichier bien créé");
-				 }
-				 else {
-				 System.out.println("Fichier pas créé");
-				 }
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		PageId ID = new PageId(Npage,taillePage);
-		return ID;
-	}
+public PageId AllocPage() {  
+        
+        if(pagesDesallouees.size()!=0) { // Si on a des pages desallouees, on en recupere une pour allouer une nouvelle page
+            PageId p1 = pagesDesallouees.get(0);
+            pagesAllouees.add(pagesDesallouees.get(0));// On l'ajoute aux pages alloues
+            pagesDesallouees.remove(0); //On la retire des pages desallouees
+            return p1;
+        }
+        
+        //S'il n'y a pas de pages desallouees
+        PageId ID = new PageId(Npage,taillePage);//On cree une page
+        pagesAllouees.add(ID);//On l'ajoute a la liste des pages allouees
+        ++taillePage;
+        
+        if(taillePage>DBParams.maxPagesPerFile ) { // Si on a depasse le nombre de pages maximal dans le fichier
+            // On change de fichier
+            ++Npage; 
+            taillePage=0;
+            File dir  = new File(DBParams.DBPath); // On cree un nouveau fichier
+            File[] liste = dir.listFiles();// On ajoute le nouveau fichier a la liste des fichiers
+            
+            int numFichier = GetIndice(liste); // Recupere l'indice du dernier fichier
+            numFichier++;
+            File fileCreated = new File(DBParams.DBPath+"\\F"+numFichier+".bdda"); // Cree un fichier avec un indice incremente de 1 par rapport au dernier existant
+            
+            try {
+                if(fileCreated.createNewFile()) {
+                     System.out.println("Fichier bien cree");
+                     PageId ID2 = new PageId(Npage,taillePage); // Si on a bien cree un fichier, on cree la premiere page du fichier
+                     return ID2;
+                 }
+                 else {
+                 System.out.println("Fichier pas cree");
+                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return ID;
+    }
 	
 	/*
 	 * fonction permet de desallouer la place en mémoire pour la pageId
