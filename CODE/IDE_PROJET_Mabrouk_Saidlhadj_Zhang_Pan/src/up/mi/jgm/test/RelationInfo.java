@@ -18,7 +18,7 @@ public class RelationInfo implements Serializable{
 	/**
 	 * Nom de la relation
 	 */
-	private String nom;
+	public  String nom;
 	
 	/**
 	 * Nombre de colonnes 

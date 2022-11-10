@@ -7,7 +7,8 @@ import java.util.List;
 
 public class TestRecord {
 	public static void main(String[] args) {
-		  
+		
+		
 		byte [] buff = new byte[4096];
 		ByteBuffer buffer = ByteBuffer.wrap(buff);
 
@@ -31,7 +32,11 @@ public class TestRecord {
 		Record record1= new Record(relationInfo, values1);
 		Record record2= new Record(relationInfo, values2);
 		Record record3= new Record(relationInfo);
-
+		
+		/*Catalog cat = new Catalog();
+		cat.relationTab = relationInfo;
+		cat.Finish();
+		Catalog cat1 = cat.Init();*/
 
 		record1.writeToBuffer(buffer, 0);
 		record2.writeToBuffer(buffer, 0);
