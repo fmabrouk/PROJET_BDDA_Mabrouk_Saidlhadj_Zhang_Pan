@@ -2,6 +2,7 @@ package up.mi.jgm.test;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestRecord {
@@ -32,11 +33,13 @@ public class TestRecord {
 		Record record3= new Record(relationInfo);
 
 
-		//record1.writeToBuffer(buffer, 0);
+		record1.writeToBuffer(buffer, 0);
 		record2.writeToBuffer(buffer, 0);
 		record3.readFromBuffer(buffer, 0);
 
 		System.out.println(record3.toString());
+		/*System.out.println("Int : "+ buffer.getInt());
+		System.out.println("Buffer : " +Arrays.toString(buffer.array()));*/
 
 	}
 }

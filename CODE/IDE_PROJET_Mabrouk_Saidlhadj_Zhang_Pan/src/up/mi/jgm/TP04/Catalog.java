@@ -1,3 +1,5 @@
+package up.mi.jgm.TP04;
+
 import java.util.ArrayList;
 
 public class Catalog {

@@ -1,3 +1,5 @@
+package up.mi.jgm.TP02;
+
 
 public class DBParams {
 	public static String DBPath;

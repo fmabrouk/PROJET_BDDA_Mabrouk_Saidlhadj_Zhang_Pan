@@ -1,3 +1,5 @@
+package up.mi.jgm.TP02;
+
 import static org.junit.Assert.fail;
 
 import java.io.IOException;

@@ -1,3 +1,7 @@
+package up.mi.jgm.TP03;
+
+import up.mi.jgm.TP02.PageId;
+import up.mi.jgm.TP02.DBParams;
 import java.nio.ByteBuffer;
 
 public class Frame {

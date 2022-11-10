@@ -1,4 +1,9 @@
+package up.mi.jgm.TP03;
+
 import java.nio.ByteBuffer;
+import up.mi.jgm.TP02.PageId;
+import up.mi.jgm.TP02.DBParams;
+import up.mi.jgm.TP02.DiskManager;
 
 public class BufferManagerTests {
 

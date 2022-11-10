@@ -1,3 +1,5 @@
+package up.mi.jgm.TP02;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -163,3 +165,4 @@ public PageId AllocPage() {
 		return g_instance;
 	}
 }
+
