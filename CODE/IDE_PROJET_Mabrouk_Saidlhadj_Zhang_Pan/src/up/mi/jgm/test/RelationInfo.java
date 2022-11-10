@@ -1,6 +1,6 @@
 package up.mi.jgm.test;
 
-//package up.mi.HuangDai.Main;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Garde les informations "de schéma" d'une relation
  * 
- * @author Huihui Huang, Julien Dai
+ *
  *
  */
 public class RelationInfo implements Serializable{
