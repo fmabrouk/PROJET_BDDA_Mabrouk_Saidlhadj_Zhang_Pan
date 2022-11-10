@@ -5,13 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//import up.mi.HuangDai.Main.RelationInfo;
 
 /**
  * Correspond à un enregistrement, c'est-à-dire à une ligne dans une table
  * 
- * @author Huihui Huang, Julien Dai
- *
+ * @a
  */
 public class Record {
 	
