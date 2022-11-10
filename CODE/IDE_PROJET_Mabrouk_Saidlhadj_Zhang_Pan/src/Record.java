@@ -11,6 +11,7 @@ public class Record {
         this.relInfo = rel;
     }
     
+   
     public void writeToBuffer(ByteBuffer buff, int pos){
     	
     	int i=0;
