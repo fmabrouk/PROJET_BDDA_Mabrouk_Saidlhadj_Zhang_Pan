@@ -1,25 +1,38 @@
 
 public class ColInfo {
-	public String nomCol; 
-	public String typeCol; 
-	
-	public ColInfo(String nom, String type) {
-		nomCol= nom; 
-		typeCol = type; 
-	}
-	
-	public ColInfo() {
-		this("","");
-	}
-	
-	public String getTypeCol(String nomCol) {
-		if(this.nomCol.equals(nomCol)) {
-			return this.typeCol; 
-		}
-		return null; 
-	}
-	
-	public String toString() {
-		return "nom col:"+ nomCol +" type col :"+typeCol; 
-	}
+	 String nom;
+	    private String type;
+	    private int taille;
+	    
+	    public ColInfo(String s){
+	        String nom[] = s.split(" ");
+	        
+	        this.nom = nom[0];
+	        s=nom[1];
+	        if(s.contains("VARCHAR")){
+	        String h= "\\(";
+	        String mots[] = s.split(h);
+	        h="\\)";
+	        String fin[] = mots[1].split(h);
+	        this.type=mots[0];
+	        this.taille=Integer.parseInt(fin[0]);
+	        }
+	        else{
+	            this.type=s;
+	            this.taille=0;
+	        }
+	    }
+	   
+	    public String getNom() {
+	        return nom;
+	    }
+
+	    public int getTaille() {
+	        return taille;
+	    }
+
+	    public String getType() {
+	        return type;
+	    }
+
 }
