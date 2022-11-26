@@ -1,15 +1,18 @@
 package up.mi.jgm.TP04;
 
-public class ColInfo {
-	String nom;
+import java.io.Serializable;
+
+public class ColInfo implements Serializable{
+	
+    String nom;
     private String type;
     private int taille;
     
     public ColInfo(String s){
-        String nom[] = s.split(" ");
-        
-        this.nom = nom[0];
-        s=nom[1];
+    	String nom[] = s.split(" ");
+    	
+    	this.nom = nom[0];
+    	s=nom[1];
         if(s.contains("VARCHAR")){
         String h= "\\(";
         String mots[] = s.split(h);
@@ -25,7 +28,7 @@ public class ColInfo {
     }
    
     public String getNom() {
-        return nom;
+    	return nom;
     }
 
     public int getTaille() {
@@ -35,5 +38,7 @@ public class ColInfo {
     public String getType() {
         return type;
     }
+
+
 
 }

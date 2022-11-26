@@ -5,27 +5,85 @@ import up.mi.jgm.TP02.DBParams;
 import java.nio.ByteBuffer;
 
 public class Frame {
-	public ByteBuffer buffer;
-	public PageId pageID;
-	//private boolean pin_Count;
-	public int pin_Count;
-	public boolean flag_dirty;
-	//private boolean refBit;
-	public ListeChainee chaine;
 	
-	public Frame(PageId pageID) {
-		this.pageID = pageID;
-		buffer = ByteBuffer.allocate((int) DBParams.pageSize);
-		pin_Count = 0;
-		flag_dirty = false;
-		//refBit = false;
-		chaine = null;
+	private ByteBuffer buffer;
+	private PageId pageId;
+	private boolean pinCount;
+	private boolean dirty;	
+	private boolean	refBit;
+	
+	public Frame() {
+		buffer = null;
+		pageId = null;
+		pinCount = false;
+		dirty = false;
+		refBit = false;
 	}
-	
+
+	public ByteBuffer getBuffer() {
+		return buffer;
+	}
+
+	public void setBuffer(ByteBuffer buffer) {
+		this.buffer = buffer;
+	}
+
+	public PageId getPageId() {
+		return pageId;
+	}
+
+	public void setPageId(PageId pageId) {
+		this.pageId = pageId;
+	}
+
+	public boolean getPinCount() {
+		return pinCount;
+	}
+
+	public void setPinCount(boolean pinCount) {
+		this.pinCount = pinCount;
+	}
+
+	public boolean getRefBit() {
+		return refBit;
+	}
+
+	public void setRefBit(boolean refBit) {
+		this.refBit = refBit;
+	}
+
+	public boolean isDirty() {
+		return dirty;
+	}
+
+	public void setDirty(boolean dirty) {
+		this.dirty = dirty;
+	}
+
+	@Override
 	public String toString() {
-		return "(pageID : ) " +pageID+ " pin_count : "+pin_Count; 
-	}
+		return "Frame [pageId=" + pageId + ", pinCount=" + pinCount + ", dirty=" + dirty + ", refBit=" + refBit + "]";
+	}	
 	
+	
+//	    public PageId id;
+//	    public int pin_count;
+//	    public boolean dirty;
+//	    public byte [] buffer;
+//	    public int temps;
+//	    
+//	    public Frame (PageId id) {
+//	    this.id = id;
+//	    pin_count = 0;
+//	    dirty = false;
+//	    buffer = new byte[4096];
+//	    temps=0;
+//	    }
+//	    
+//	public String toString() {
+//		return "(pageID : ) " +id+ " pin_count : "+pin_count; 
+//	}
+//	
 	/*
 	public ByteBuffer getBuffer() {
 		return buffer;
