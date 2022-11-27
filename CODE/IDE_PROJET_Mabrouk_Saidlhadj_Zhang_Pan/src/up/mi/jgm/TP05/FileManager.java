@@ -1,6 +1,8 @@
 package up.mi.jgm.TP05;
 import up.mi.jgm.TP04.Record;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+
 import up.mi.jgm.TP04.*;
 
 import up.mi.jgm.TP02.*;
@@ -121,6 +123,20 @@ public class FileManager {
 		// Forcé l'arrêt dès qu'on a fini d'écrire
 		return rid;
 	}
+	
+	
+	//A completer
+	public Record [] getRecordsInDataPage(RelationInfo relInfo, PageId pageId) {
+    	ArrayList<Record> recordList = new ArrayList<Record>();
+    	//Record [] recordList = new Record[relInfo.slotCount]; 
+    	//System.out.println("getpage"+pageId); 
+    	ByteBuffer page = BufferManager.getSingleton().getPage(pageId); 
+    	page.position(Integer.BYTES*4); 
+    
+    	//System.out.println("freePage"+pageId);
+    	BufferManager.getSingleton().freePage(pageId, false);
+    	return recordList.toArray(Record []::new);
+    }
 	
     public static FileManager getFileManager() {
     	return fileManager; 

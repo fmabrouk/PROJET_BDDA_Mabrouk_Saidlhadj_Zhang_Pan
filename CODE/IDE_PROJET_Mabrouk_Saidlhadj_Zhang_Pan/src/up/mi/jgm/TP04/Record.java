@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Record {
 	private int Written;
     private RelationInfo relInfo;
+    //private RecordId rid;
     private ArrayList<String> values =new ArrayList<String>();
 
     public Record(RelationInfo rel, ArrayList<String> valeurs){
