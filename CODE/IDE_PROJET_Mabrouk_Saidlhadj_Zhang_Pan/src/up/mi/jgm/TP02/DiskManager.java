@@ -113,7 +113,8 @@ public PageId AllocPage() {
 	public void readPage(PageId pageID, ByteBuffer buffer) {
 		if (pageID != null) {
 			buffer.position(0);
-			File file = new File(DBParams.DBPath + pageID.FileIdx + ".rf");
+			File file = new File(DBParams.DBPath+"\\F"+pageID.FileIdx+".bdda");
+			//System.out.println(DBParams.DBPath + pageID.FileIdx + ".bdda");
 			try {
 				RandomAccessFile raf = new RandomAccessFile(file, "r");
 				raf.seek(DBParams.pageSize * pageID.FileIdx);

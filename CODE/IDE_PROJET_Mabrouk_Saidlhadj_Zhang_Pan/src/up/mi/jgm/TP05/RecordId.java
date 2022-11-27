@@ -5,8 +5,8 @@ public class RecordId {
 	public PageId pageid;
 	public int slotIdx;
 	
-	public RecordId(PageId id, int index) {
-		pageid=id;
-		slotIdx=index;
+	public RecordId() {
+		this.pageid=null;
+		this.slotIdx=0;
 	}
 }

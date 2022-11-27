@@ -7,21 +7,19 @@ public class HeaderPage {
 	
 	private int mInitPosition = 0;
 	private ByteBuffer mByteBuffer = null;
+	private int nombreDataPage = 0;
+	
 	
 	public HeaderPage(ByteBuffer buff) {
 		mInitPosition = buff.position();
 		mByteBuffer = buff;
 	}
 	
-	public void setNbEntrySlot(int nb) {
-		mByteBuffer.position(DBParams.pageSize - 2*Integer.BYTES);
-		mByteBuffer.putInt(nb);
+	public void setNombreDataPage() {
+		nombreDataPage++;
 	}
-
-	public int getNbEntrySlot() {
-		mByteBuffer.position(DBParams.pageSize - 2*Integer.BYTES);
-		return mByteBuffer.getInt();
-	}
+	
+	
 	/*
 	public toString() {
 		
