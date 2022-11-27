@@ -76,47 +76,47 @@ public class FileManager {
 		RecordId rid= new RecordId();
 		
 		// Chercher le HeaderPage situé à PageIdx= 0 et charger son contenu
-		PageId headerPage= new PageId(relInfo., 0);
-		byte[] bufferHeaderPage= BufferManager.getInstance().GetPage(headerPage);
-		ByteBuffer hp = ByteBuffer.wrap(bufferHeaderPage);
+		PageId headerPage= new PageId(DiskManager.getSingleton().AllocPage().getFileIdx(), 0);
+		ByteBuffer bufferHeaderPage= BufferManager.getSingleton().getPage(headerPage);
+		 
 		
 		// Récupère la page de données identifiée par pageId
-		byte[] buffer= BufferManager.getInstance().GetPage(pageId);
+		ByteBuffer buffer= BufferManager.getSingleton().getPage(pageId);
 		
 		// Nombre de bitmap nécessaire dans une page
-		int tailleBitmap = relInfo.getSlotCount();
+		DataPage data = new DataPage(buffer);
+		int slot = data.getNbEntrySlot();
 		
 		// Récupère tous les données des slots 
-		ByteBuffer slot = ByteBuffer.wrap(buffer, tailleBitmap, buffer.length - tailleBitmap);
+		
 
 		// Parcourir le tableau de bitmap
 		boolean placer = false;
-		for (int i=0; i<relInfo.getSlotCount() && !placer; i++) {
+		
 			// Si bitmap = 0 alors c'est une case libres
-			if (buffer[i] == 0) {
+			
 				
 				// Ecrire le record dans la page de données libre
-				record.writeToBuffer(slot, i);
 				
-				// Actualiser son bytemap à 1
-				buffer[i] = 1;
+				
+				
 
 				// Actualiser le nombre de slot restant de la page
 				int index = pageId.getPageIdx() * 4;
-				int value = hp.getInt(index);
-				hp.putInt(index, --value);
+				int value = bufferHeaderPage.getInt(index);
+				bufferHeaderPage.putInt(index, --value);
 
 				// Actualise l'identifiant du record
-				rid.setSlotIdx(i);
+				//rid.setSlotIdx(i);
 				rid.setPageId(pageId);
 
 				placer = true;
-			}
-		}
+			
+		
 
 		// Libérer la page et le headerPage avec le flag dirty = 1
-		BufferManager.getInstance().freePage(pageId, true);
-		BufferManager.getInstance().freePage(headerPage, true);
+		BufferManager.getSingleton().freePage(pageId, true);
+		BufferManager.getSingleton().freePage(headerPage, true);
 
 		// Forcé l'arrêt dès qu'on a fini d'écrire
 		return rid;
