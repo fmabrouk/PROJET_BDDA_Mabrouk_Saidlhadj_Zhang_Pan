@@ -11,7 +11,8 @@ public class FileManagerTests {
 		// TODO Auto-generated method stub
 		DBParams.frameCount = 2;
 		DBParams.DBPath = "C:\\Users\\fayez\\OneDrive\\Bureau\\BDDA_22\\PROJET_BDDA_Mabrouk_Saidlhadj_Zhang_Pan\\DB";
-		PageId nouvPage = FileManager.getFileManager().createNewHeaderPage();
+		//PageId nouvPage = FileManager.getFileManager().createNewHeaderPage();
+		PageId nouvPage = FileManager.getFileManager().addDataPage(null);
 		
 	}
 	
