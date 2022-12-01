@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public class ColInfo implements Serializable{
 	
+	private static final long serialVersionUID = 6652459870088798447L;
+	
+	
     String nom;
     private String type;
     private int taille;

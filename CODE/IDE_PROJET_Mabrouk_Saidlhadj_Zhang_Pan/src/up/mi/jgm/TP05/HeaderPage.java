@@ -26,12 +26,4 @@ public class HeaderPage {
 		int nbPages = mByteBuffer.getInt(0);
 		return nbPages;
 	}
-	
-	
-	/*
-	public toString() {
-		
-		
-		return 
-	}*/
 }

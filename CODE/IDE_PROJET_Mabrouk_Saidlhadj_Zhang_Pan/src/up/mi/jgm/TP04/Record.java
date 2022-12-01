@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Record {
 
     private RelationInfo relInfo;
-    //private RecordId rid;
+    
     private ArrayList<String> values =new ArrayList<String>();
 
     public Record(RelationInfo rel, ArrayList<String> valeurs){
@@ -136,7 +136,10 @@ public class Record {
         	}
         	
     	}
-        	 public void readFromBuffer(ByteBuffer buff, int pos) {
+    	
+    	
+    	
+       public void readFromBuffer(ByteBuffer buff, int pos) {
       	    	int positionValues=0;
       	    	int j=0;
       	 		System.out.println();
@@ -187,32 +190,6 @@ public class Record {
       	           }
       	            
       	    }
-    	
-    	/*
-        for(int i=0;i<relInfo.getData().size();i++){
-        	
-	        relInfo.getData().get(i).getType();
-	        
-	            if(relInfo.getData().get(i).getType()=="INTEGER"){
-	                int y=Integer.parseInt(values.get(i));
-	                buff.putInt(pos,y);
-	            }
-	            if(relInfo.getData().get(i).getType()=="REAL"){
-	            	
-	                float y=Float.parseFloat(values.get(i));
-	                buff.putFloat(pos,y);
-	            }
-	            if(relInfo.getData().get(i).getType()=="VARCHAR"){
-	            	
-	                for(int x=0;x<values.get(i).length();x++){
-	                    //pas terminer
-	                	
-	                    char charVar = values.get(i).charAt(x);
-	                    buff.putChar(pos,charVar);
-	                }
-	            }
-        }
-        */
     }
     
     

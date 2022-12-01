@@ -18,17 +18,15 @@ public class Catalog implements Serializable{
 	 */
 	private static final long serialVersionUID = 6652459870088798447L;
 	
-	ArrayList<RelationInfo> Data;
-    
+	
+	
+	private static ArrayList<RelationInfo> Data;
+	private static Catalog cat = new Catalog(Data);
+	
+	
+	//Attributs
     public  ArrayList<RelationInfo> relationTab; 
-    public int compteur; 
-    
-    /*
-    public Catalog() {
-        relationTab = new ArrayList<RelationInfo>(); 
-        compteur = 0; 
-    }
-    */
+    public int compteur = 0;
     
     public ArrayList<RelationInfo> getRelationTab() {
 		return relationTab;
@@ -38,6 +36,7 @@ public class Catalog implements Serializable{
 		this.relationTab = relationTab;
 	}
 
+	//Constructeurs
 	public Catalog(ArrayList<RelationInfo> d) {
     	relationTab  =new ArrayList<RelationInfo>();
     	relationTab  = d;
@@ -48,30 +47,23 @@ public class Catalog implements Serializable{
         try {
             FileInputStream f = new FileInputStream (DBParams.DBPath+File.separator+"Catalog.sv");
             ObjectInputStream s = new ObjectInputStream(f);
-           //relationTab =((Catalog) s).readObject().relationTab; 
-            //compteur = (Catalog) s.readObject().compteur;
             Catalog C = (Catalog) s.readObject(); 
             C.test();
             s.close();
             f.close();
         }catch (FileNotFoundException e){
-            //return new Catalog(); 
+             
         }
         
         catch (IOException e){
             System.out.println(" Erreur E/S ");
             e.printStackTrace();
-            //return new Catalog(); 
         }
         catch (ClassNotFoundException e){
-            System.out.println(" Pb classe ");
-            //return new Catalog(); 
+            System.out.println(" Probléme classe ");
         }
-        
-        //return catalog;
-        
-        
-    }
+     }
+    
     
     public void Finish() {
         try {
@@ -106,9 +98,14 @@ public class Catalog implements Serializable{
         return null;
     }
     
+    
     public void test(){
         
         System.out.println(this.getRelationTab().get(0).getData().get(0).getNom());
+    }
+    
+    public static Catalog getCatalog() {
+    	return cat;
     }
 
 }

@@ -6,6 +6,9 @@ import up.mi.jgm.TP02.PageId;
 
 public class RelationInfo implements Serializable{
 
+	private static final long serialVersionUID = 6652459870088798447L;
+	
+	
     private ArrayList<ColInfo> Data=new ArrayList<ColInfo>();
     private String nomRelation;
     private PageId headerPageId;

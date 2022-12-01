@@ -39,7 +39,6 @@ public class FileManager {
 	        int nbPage= buffer.getInt(0);
 	        
 	        // Parcourir HeaderPage à la recherche d'une page avec un slot restant
-	        PageId page=null;
 			 for(int i=0; i<nbPage ; i++) {
 				 if(sizeRecord <= buffer.get(Integer.BYTES + i*2*Integer.BYTES)) {
 					 int FileIdx = buffer.getInt((Integer.BYTES + i*Integer.BYTES)*i);
@@ -219,8 +218,6 @@ public class FileManager {
     }
     
    
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 3cd9b5019a5a6a0fe28508788a65783ddef2b0b0
+
