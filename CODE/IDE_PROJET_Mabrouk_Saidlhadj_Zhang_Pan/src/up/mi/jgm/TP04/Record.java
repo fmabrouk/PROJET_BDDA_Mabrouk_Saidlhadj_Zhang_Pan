@@ -21,6 +21,10 @@ public class Record {
 		return Written;
     	
     }
+    
+    public RelationInfo getRelationInfo() {
+    	return relInfo;
+    }
     /**
      * Ecrire les valeurs du record dans le buffer à partir d'une position donnée
      * @param buff le buffer dans lequel on veut écrire
