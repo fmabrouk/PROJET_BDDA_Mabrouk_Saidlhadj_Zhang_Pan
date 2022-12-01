@@ -15,7 +15,7 @@ public class FileManager {
 	
 	public  PageId createNewHeaderPage() {
         PageId nouvPage = DiskManager.getSingleton().AllocPage();
-        BufferManager.getSingleton().bufferManager(2);
+        BufferManager.getSingleton().bufferManager(DBParams.frameCount);
         ByteBuffer page = BufferManager.getSingleton().getPage(nouvPage);
         page.putInt(0);
         BufferManager.getSingleton().freePage(nouvPage, true);
@@ -26,7 +26,7 @@ public class FileManager {
     public PageId addDataPage(RelationInfo relInfo) {
     			// Rajouter une page du fichier disque correspondant
     			PageId pageId= DiskManager.getSingleton().AllocPage();
-    			BufferManager.getSingleton().bufferManager(2);
+    			BufferManager.getSingleton().bufferManager(DBParams.frameCount);
     			ByteBuffer bufferPageAjoutee= BufferManager.getSingleton().getPage(pageId);
     			
     			/* **** Actualiser les informations de la page ajouté **** */
@@ -67,6 +67,7 @@ public class FileManager {
 		PageId headerPage= new PageId(relInfo.getHeaderPageId().getFileIdx(), 0);
 		
 		// Obtenir sa page
+		BufferManager.getSingleton().bufferManager(DBParams.frameCount);
 		ByteBuffer buffer= BufferManager.getSingleton().getPage(headerPage);
 		
 		
@@ -100,6 +101,7 @@ public class FileManager {
 		
 		// Chercher le HeaderPage situé à PageIdx= 0 et charger son contenu
 		PageId headerPage= new PageId(-1, 0);
+		BufferManager.getSingleton().bufferManager(DBParams.frameCount);
 		ByteBuffer bufferHeaderPage= BufferManager.getSingleton().getPage(headerPage);
 		
 		
@@ -125,6 +127,7 @@ public class FileManager {
 		List<Record> records= new ArrayList<Record>();
 		
 		// Récupère la page de données
+		BufferManager.getSingleton().bufferManager(DBParams.frameCount);
 		ByteBuffer buffer= BufferManager.getSingleton().getPage(pageId);
 
 		
@@ -171,6 +174,7 @@ public class FileManager {
 		PageId headerPage= new PageId(relInfo.getHeaderPageId().getFileIdx(), 0);
 		
 		// Obtenir sa page
+		BufferManager.getSingleton().bufferManager(DBParams.frameCount);
 		ByteBuffer buffer= BufferManager.getSingleton().getPage(headerPage);
 		
 
