@@ -219,4 +219,8 @@ public class FileManager {
     }
     
    
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3cd9b5019a5a6a0fe28508788a65783ddef2b0b0
