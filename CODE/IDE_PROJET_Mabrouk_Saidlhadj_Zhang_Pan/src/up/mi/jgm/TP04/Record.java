@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 public class Record {
-	private int Written;
+
     private RelationInfo relInfo;
     //private RecordId rid;
     private ArrayList<String> values =new ArrayList<String>();
@@ -18,14 +18,46 @@ public class Record {
     }
     
     public int getWrittenSize(){
-		return Written;
+    	int taille=0;
+    	int i=0;
+
+    	for(int x=0; x<values.size()/relInfo.getData().size();x++) {
+    		for(int j = 0; j<relInfo.getData().size(); j++) {
+    			
+    			
+    			if(relInfo.getData().get(j).getType().equals("INTEGER")){
+    				taille+=Integer.BYTES;
+                   
+                }
+    			
+                if(relInfo.getData().get(j).getType().equals("REAL")){
+                	
+                   taille+=Float.BYTES;
+                }
+
+                if(relInfo.getData().get(j).getType().equals("VARCHAR")){
+                	for(int l=0; l<values.get(i).length(); l++) {
+                		taille+=Character.BYTES;
+                	}
+                }
+               
+    			i++;
+    			
+    		}
+    	}
+    	
+    	return taille;
     	
     }
-    
-    public RelationInfo getRelationInfo() {
-    	return relInfo;
-    }
-    /**
+    public RelationInfo getRelInfo() {
+		return relInfo;
+	}
+
+	public void setRelInfo(RelationInfo relInfo) {
+		this.relInfo = relInfo;
+	}
+
+	/**
      * Ecrire les valeurs du record dans le buffer à partir d'une position donnée
      * @param buff le buffer dans lequel on veut écrire
      * @param pos la position à partir de laquelle on veut écrire
@@ -103,7 +135,6 @@ public class Record {
         		}
         	}
         	
-        	Written=positionValues+values.size()*Integer.BYTES;
     	}
         	 public void readFromBuffer(ByteBuffer buff, int pos) {
       	    	int positionValues=0;
