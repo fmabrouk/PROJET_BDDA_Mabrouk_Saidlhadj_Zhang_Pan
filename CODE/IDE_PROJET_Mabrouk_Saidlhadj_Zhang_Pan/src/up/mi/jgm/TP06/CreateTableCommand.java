@@ -1,11 +1,17 @@
 package up.mi.jgm.TP06;
 import up.mi.jgm.TP04.*;
+import up.mi.jgm.TP05.*;
+import up.mi.jgm.TP02.*;
 import java.util.ArrayList;
 
 public class CreateTableCommand implements Command{
 	
-	private ArrayList<ColInfo> Col;
-    private String nomRelation;
+	public String nomRelation; 
+	public int nbColonnes; 
+	public ArrayList<String> nomColonne;
+	public ArrayList<String> typeColonne; 
+    
+    
     
     public CreateTableCommand(String SQL) {
     	
@@ -39,11 +45,16 @@ public class CreateTableCommand implements Command{
     
 	@Override
 	public void Execute() {
-		RelationInfo rel = new RelationInfo(nomRelation);
-        
-        rel.setData(Col);
-   
-		Record rec = new Record(rel);
+		PageId pageId= FileManager.getFileManager().createNewHeaderPage();
+		ArrayList<ColInfo> tab= new ArrayList<ColInfo>();
+		
+		for(int i=0; i<nomColonne.size(); i++) {
+			ColInfo colinf= new ColInfo(nomColonne.get(i));
+			tab.add(colinf);
+		}
+		nbColonnes=tab.size();
+		//RelationInfo rel =new RelationInfo(nomRelation, pageId);
+		
 
 		
 	}
